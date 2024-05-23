@@ -1,0 +1,16 @@
+{
+	"name": "tech-blog",
+	"dockerComposeFile": "../docker-compose.yml",
+	"postCreateCommand": "./.devcontainer/postCreateCommand.sh",
+	"workspaceFolder": "/app",
+	"service": "app",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"biomejs.biome",
+				"editorconfig.editorconfig",
+				"jasonnutter.search-node-modules"
+			]
+		}
+	}
+}
