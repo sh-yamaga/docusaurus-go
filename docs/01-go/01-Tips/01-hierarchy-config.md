@@ -1,23 +1,22 @@
 ---
 title: 階層config
+description: このページでは、Go言語で階層化したconfigを使う方法を紹介します。goのプロジェクト内で、環境変数を`.env`から読み取り、任意のgoファイルからアクセスできるようにすることができるようになります。
+image: img/thambnails/go/hierarchy-config.png
+keywords: [Go, 階層, config, godotenv]
 tags:
-  - Go
-  - Tips
-  - 階層
-  - config
+  - godotenv
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 階層config
 
-こんにちは、めんだこです。  
 このページでは、Go言語で**階層化したconfigを使う方法**を紹介します。
 
-## できるようになること
+### できるようになること
 goのプロジェクト内で、環境変数を`.env`から読み取り、任意のgoファイルからアクセスできるようにすることができるようになります。
 
-## 最終的なファイル構成
+### 最終的なファイル構成
 
 ```bash
 <project>
@@ -48,7 +47,7 @@ import (
     "<project>/config"
 )
 
-func main() {
+func any() {
     cfg := config.New()
 
     fmt.Println(cfg.App.Url) // https://example.com
@@ -81,7 +80,7 @@ DB_PASS=password
 go get github.com/joho/godotenv
 ```
 
-:::info[`godotenv`の使用例]
+:::info[`godotenv`の使用法]
 
 ```go title="main.go"
 package main
