@@ -3,7 +3,7 @@ import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
-	title: "tech.unit-code",
+	title: "めんだこの技術部屋",
 	tagline: "Dinosaurs are cool",
 	favicon: "img/favicon.ico",
 
@@ -35,17 +35,9 @@ const config: Config = {
 			{
 				docs: {
 					sidebarPath: "./sidebars.ts",
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					editUrl:
-						"https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
 				},
 				blog: {
 					showReadingTime: true,
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					editUrl:
-						"https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
 				},
 				theme: {
 					customCss: "./src/css/custom.css",
@@ -58,21 +50,44 @@ const config: Config = {
 		// Replace with your project's social card
 		image: "img/docusaurus-social-card.jpg",
 		navbar: {
-			title: "tech.unit-code",
+			title: "めんだこの技術部屋",
 			logo: {
-				alt: "My Site Logo",
-				src: "img/logo.svg",
+				alt: "mendako",
+				src: "img/mendako.png",
 			},
 			items: [
 				{
 					type: "docSidebar",
-					sidebarId: "tutorialSidebar",
+					sidebarId: "goSidebar",
 					position: "left",
-					label: "Tutorial",
+					label: "Go言語",
 				},
-				{ to: "/blog", label: "Blog", position: "left" },
 				{
-					href: "https://github.com/facebook/docusaurus",
+					type: "docSidebar",
+					sidebarId: "typescriptSidebar",
+					position: "left",
+					label: "TypeScript",
+				},
+				{
+					type: "docSidebar",
+					sidebarId: "reactSidebar",
+					position: "left",
+					label: "React",
+				},
+				{
+					type: "docSidebar",
+					sidebarId: "awsSidebar",
+					position: "left",
+					label: "AWS",
+				},
+				{
+					type: "docSidebar",
+					sidebarId: "architectureSidebar",
+					position: "left",
+					label: "Software Architecture",
+				},
+				{
+					href: "https://github.com/sh-yamaga",
 					label: "GitHub",
 					position: "right",
 				},
