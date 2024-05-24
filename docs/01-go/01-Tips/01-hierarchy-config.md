@@ -10,13 +10,13 @@ tags:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 階層config
+# 階層 config
 
-このページでは、Go言語で**階層化した config を使う方法**を紹介します。
+このページでは、Go 言語で**階層化した config を使う方法**を紹介します。
 
 ### できるようになること
 
-goのプロジェクト内で、環境変数を`.env`から読み取り、任意のgoファイルからアクセスできるようにすることができるようになります。
+go のプロジェクト内で、環境変数を`.env`から読み取り、任意の go ファイルからアクセスできるようにすることができるようになります。
 
 ### 最終的なファイル構成
 
@@ -50,11 +50,12 @@ import (
 )
 
 func any() {
-    cfg := config.New()
+    cfg := config.Config{}
+    cfg.New()
 
-    fmt.Println(cfg.App.Url) // https://example.com
+    fmt.Println(cfg.App.Url)     // https://example.com
     // ...
-    fmt.Println(cfg.Db.User) // user
+    fmt.Println(cfg.Db.User)     // user
     fmt.Println(cfg.Db.Password) // password
 }
 ```
@@ -176,7 +177,7 @@ func (c *Config) New() {
 }
 ```
 
-## 3. goファイルから config へアクセス
+## 3. go ファイルから config へアクセス
 
 `main.go`からアクセスする例を示します。
 
