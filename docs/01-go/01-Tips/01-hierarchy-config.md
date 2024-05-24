@@ -159,20 +159,20 @@ type dbConfig struct {
 }
 
 func (c *Config) New() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal(".envの読み取りに失敗しました。")
-	}
+    err := godotenv.Load()
+    if err != nil {
+        log.Fatal(".envの読み取りに失敗しました。")
+    }
 
-	c.App = &appConfig{
-		Url: os.Getenv("APP_URL"),
-		// ...
-	}
-	c.Db = &dbConfig{
-		User:     os.Getenv("DB_USER"),
-		Password: os.Getenv("DB_PASS"),
-		// ...
-	}
+    c.App = &appConfig{
+        Url: os.Getenv("APP_URL"),
+        // ...
+    }
+    c.Db = &dbConfig{
+        User:     os.Getenv("DB_USER"),
+        Password: os.Getenv("DB_PASS"),
+        // ...
+    }
 }
 ```
 
@@ -190,11 +190,11 @@ import (
 
 func main() {
     cfg := config.Config{}
-	cfg.New()
+    cfg.New()
 
-	fmt.Println(cfg.App.Url)     // https://example.com
-	fmt.Println(cfg.Db.User)     // user
-	fmt.Println(cfg.Db.Password) // password
+    fmt.Println(cfg.App.Url)     // https://example.com
+    fmt.Println(cfg.Db.User)     // user
+    fmt.Println(cfg.Db.Password) // password
 }
 ```
 
