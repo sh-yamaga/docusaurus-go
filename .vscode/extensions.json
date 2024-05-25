@@ -3,5 +3,7 @@
 		"biomejs.biome",
 		"editorconfig.editorconfig",
 		"jasonnutter.search-node-modules",
+		"yzhang.markdown-all-in-one",
+		"unifiedjs.vscode-mdx"
 	]
 }

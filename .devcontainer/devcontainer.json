@@ -1,5 +1,5 @@
 {
-	"name": "tech-blog",
+	"name": "go.tech.unit-code",
 	"dockerComposeFile": "../docker-compose.yml",
 	"postCreateCommand": "./.devcontainer/postCreateCommand.sh",
 	"workspaceFolder": "/app",
@@ -9,7 +9,9 @@
 			"extensions": [
 				"biomejs.biome",
 				"editorconfig.editorconfig",
-				"jasonnutter.search-node-modules"
+				"jasonnutter.search-node-modules",
+				"yzhang.markdown-all-in-one",
+				"unifiedjs.vscode-mdx"
 			]
 		}
 	}
