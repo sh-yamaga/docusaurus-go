@@ -1,6 +1,6 @@
 ---
 title: 和訳
-description: 一部、本文からの表記を変更しています。
+description: Effective GoのConstantsの翻訳
 # image: img/thambnails/go/hierarchy-config.png
 keywords: [Go, constants, 定数, effective go]
 tags:

@@ -1,6 +1,6 @@
 ---
-title: 前提知識
-description: Constants を読み解くための前提知識を紹介しています。
+title: 補足
+description: Constants を読み解くための補足を紹介しています。
 # image: img/thambnails/go/hierarchy-config.png
 keywords: [Go, constants, 定数, effective go, データ単位]
 tags:
@@ -9,7 +9,7 @@ tags:
   - 事前知識
 ---
 
-# 前提知識
+# 補足
 
 ## データの単位
 
@@ -52,10 +52,6 @@ tags:
 これをGoで表現すると、このようになります。
 
 ```go
-package main
-
-import "fmt"
-
 func main() {
     x, n := 13, 2
 
@@ -63,17 +59,13 @@ func main() {
 }
 ```
 
-左シフトすることで、値 x を 2^n 倍していることが分かります。
+左シフト演算子`<<`を使うことで、値 x を 2^n 倍しています。
 
 ## まとめ
 
 ここまでの知識を合わせると、このコードを理解することができます。
 
 ```go
-package main
-
-import "fmt"
-
 func main() {
     kb := 1024
     mb := kb * 1024
