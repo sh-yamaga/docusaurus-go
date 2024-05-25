@@ -6,7 +6,7 @@ keywords: [Go, constants, 定数, effective go, データ単位]
 tags:
   - effective go
   - constants
-  - 事前知識
+  - 補足
 ---
 
 # 補足
