@@ -75,12 +75,6 @@ const config: Config = {
 					label: "標準ライブラリ",
 				},
 				{
-					type: "docSidebar",
-					sidebarId: "basicSidebar",
-					position: "left",
-					label: "Goの基礎",
-				},
-				{
 					href: "https://github.com/tech-unit-code/go",
 					label: "GitHub",
 					position: "right",
