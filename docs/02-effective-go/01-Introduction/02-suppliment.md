@@ -1,7 +1,6 @@
 ---
 title: 補足
 description: リード文を読み解くための補足を紹介しています。
-# image: img/thambnails/go/hierarchy-config.png
 keywords: [Go, effective go, Introduction]
 tags:
   - effective go
@@ -10,29 +9,6 @@ tags:
 ---
 
 # 補足
-
-## [公式文書群](https://go.dev/doc/)
-
-### [language specification](https://go.dev/ref/spec)
-
-Go の言語仕様書。  
-基礎の基礎と言えそうな文書となっている。根気は必要となるが、一度は読まれたい。
-
-### [A Tour of Go](https://go.dev/tour/welcome/1)
-
-Go の対話的なチュートリアル。  
-4 つのセクションに分かれており、それぞれ
-
-1. 基本的な構文とデータ構造
-2. メソッドとインターフェイス
-3. ジェネリクス
-4. 並行処理の原則
-
-を説明している。
-
-### [How to Write Go Code](https://go.dev/doc/code)
-
-Go のモジュール内で簡単なパッケージ群を開発する方法を説明し、パッケージをビルドしてテストするための go コマンドを紹介した文書。
 
 ## [issue 28782](https://github.com/golang/go/issues/28782)
 
