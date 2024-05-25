@@ -64,18 +64,24 @@ const config: Config = {
 				},
 				{
 					type: "docSidebar",
-					sidebarId: "basicSidebar",
-					position: "left",
-					label: "Goの基礎",
-				},
-				{
-					type: "docSidebar",
 					sidebarId: "effectiveGoSidebar",
 					position: "left",
 					label: "Effective Go",
 				},
 				{
-					href: "https://github.com/sh-yamaga",
+					type: "docSidebar",
+					sidebarId: "standardLibrarySidebar",
+					position: "left",
+					label: "標準ライブラリ",
+				},
+				{
+					type: "docSidebar",
+					sidebarId: "basicSidebar",
+					position: "left",
+					label: "Goの基礎",
+				},
+				{
+					href: "https://github.com/tech-unit-code/go",
 					label: "GitHub",
 					position: "right",
 				},
@@ -97,14 +103,6 @@ const config: Config = {
 					title: "Community",
 					items: [
 						{
-							label: "Stack Overflow",
-							href: "https://stackoverflow.com/questions/tagged/docusaurus",
-						},
-						{
-							label: "Discord",
-							href: "https://discordapp.com/invite/docusaurus",
-						},
-						{
 							label: "Twitter",
 							href: "https://twitter.com/docusaurus",
 						},
@@ -116,10 +114,6 @@ const config: Config = {
 						{
 							label: "Blog",
 							to: "/blog",
-						},
-						{
-							label: "GitHub",
-							href: "https://github.com/sh-yamaga",
 						},
 					],
 				},
