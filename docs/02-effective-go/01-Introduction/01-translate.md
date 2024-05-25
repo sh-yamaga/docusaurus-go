@@ -1,12 +1,11 @@
 ---
-title: リード文
+title: 和訳
 description: Introduction リード文の翻訳
 # image: img/thambnails/go/hierarchy-config.png
 keywords: [Go, effective go, Introduction]
 tags:
   - effective go
   - Introduction
-  - リード文
   - 和訳
 ---
 

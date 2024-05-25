@@ -6,7 +6,6 @@ keywords: [Go, effective go, Introduction]
 tags:
   - effective go
   - Introduction
-  - リード文
   - 補足
 ---
 
