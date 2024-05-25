@@ -3,20 +3,20 @@ import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 
 const config: Config = {
-	title: "めんだこの技術部屋",
-	tagline: "Dinosaurs are cool",
+	title: "Go Tips",
+	tagline: "webエンジニア めんだこの技術部屋",
 	favicon: "img/favicon.ico",
 
 	// Set the production url of your site here
-	url: "https://tech.unit-code.com",
+	url: "https://go.tech.unit-code.com",
 	// Set the /<baseUrl>/ pathname under which your site is served
 	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: "/",
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
-	organizationName: "yamaga-sh", // Usually your GitHub org/user name.
-	projectName: "tech-blog", // Usually your repo name.
+	organizationName: "tech-blog", // Usually your GitHub org/user name.
+	projectName: "go.tech", // Usually your repo name.
 
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "warn",
@@ -50,41 +50,29 @@ const config: Config = {
 		// Replace with your project's social card
 		image: "img/docusaurus-social-card.jpg",
 		navbar: {
-			title: "めんだこの技術部屋",
+			title: "GoTips",
 			logo: {
-				alt: "mendako",
+				alt: "めんだこ",
 				src: "img/mendako.png",
 			},
 			items: [
 				{
 					type: "docSidebar",
-					sidebarId: "goSidebar",
+					sidebarId: "tipsSidebar",
 					position: "left",
-					label: "Go言語",
+					label: "Tips",
 				},
 				{
 					type: "docSidebar",
-					sidebarId: "typescriptSidebar",
+					sidebarId: "basicSidebar",
 					position: "left",
-					label: "TypeScript",
+					label: "Goの基礎",
 				},
 				{
 					type: "docSidebar",
-					sidebarId: "reactSidebar",
+					sidebarId: "effectiveGoSidebar",
 					position: "left",
-					label: "React",
-				},
-				{
-					type: "docSidebar",
-					sidebarId: "awsSidebar",
-					position: "left",
-					label: "AWS",
-				},
-				{
-					type: "docSidebar",
-					sidebarId: "architectureSidebar",
-					position: "left",
-					label: "Software Architecture",
+					label: "Effective Go",
 				},
 				{
 					href: "https://github.com/sh-yamaga",

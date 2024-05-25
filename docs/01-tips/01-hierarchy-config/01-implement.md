@@ -1,35 +1,39 @@
 ---
-title: 階層config
-description: このページでは、Go言語で階層化したconfigを使う方法を紹介します。goのプロジェクト内で、環境変数を`.env`から読み取り、任意のgoファイルからアクセスできるようにすることができるようになります。
+title: 実装
+description: このページでは、Go言語で階層化したconfigの実装方法を紹介します。goのプロジェクト内で、環境変数を`.env`から読み取り、任意のgoファイルからアクセスできるようにすることができるようになります。
 image: img/thambnails/go/hierarchy-config.png
-keywords: [Go, 階層, config, godotenv]
+keywords: [Go, 階層, config, godotenv, object]
 tags:
   - godotenv
+  - object
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 階層 config
+# 階層 config　実装
 
 このページでは、Go 言語で**階層化した config を使う方法**を紹介します。
 
 ### できるようになること
 
-go のプロジェクト内で、環境変数を`.env`から読み取り、任意の go ファイルからアクセスできるようにすることができるようになります。
+go のプロジェクト内で、環境変数を`.env`から読み取り、任意の go ファイルからアクセスできるようにすることができるようになります。  
+なお、この解説記事では`main.go`を実行して動く、webサーバーのようなプロジェクトでの使用を想定しています。
 
 ### 最終的なファイル構成
 
 ```bash
 <project>
 ├── .env
+├── any
+│   └── any.go
 ├── config
 │   └── config.go
 └── main.go
 ```
 
 <Tabs>
-<TabItem value="" label=".env">
+<TabItem value="env" label=".env">
 
 ```
 APP_URL=https://example.com
@@ -39,7 +43,7 @@ DB_PASS=password
 ```
 
 </TabItem>
-<TabItem value="go" label="any.go">
+<TabItem value="any" label="any.go">
 
 ```go
 package any
@@ -49,7 +53,76 @@ import (
     "<project>/config"
 )
 
-func any() {
+func DoSomething() {
+
+    fmt.Println(cfg.App.Url)     // https://example.com
+    // ...
+    fmt.Println(cfg.Db.User)     // user
+    fmt.Println(cfg.Db.Password) // password
+}
+```
+
+</TabItem>
+<TabItem value="config" label="config.go">
+
+```go
+package config
+
+import (
+    "log"
+    "os"
+
+    "github.com/joho/godotenv"
+)
+
+type Config struct {
+    App *appConfig
+    Db *dbConfig
+    // ...
+}
+
+type appConfig struct {
+    Url string
+    // ...
+}
+
+type dbConfig struct {
+    User string
+    Password string
+    // ...
+}
+
+func (c *Config) New() {
+    err := godotenv.Load()
+    if err != nil {
+        log.Fatal(".envの読み取りに失敗しました。")
+    }
+
+    c.App = &appConfig{
+        Url: os.Getenv("APP_URL"),
+        // ...
+    }
+    c.Db = &dbConfig{
+        User:     os.Getenv("DB_USER"),
+        Password: os.Getenv("DB_PASS"),
+        // ...
+    }
+}
+```
+
+</TabItem>
+<TabItem value="main" label="main.go">
+
+```go
+package main
+
+import (
+    "fmt"
+    "<project>/config"
+    "<project>/any"
+)
+
+func main() {
     cfg := config.Config{}
     cfg.New()
 
@@ -64,8 +137,8 @@ func any() {
 </Tabs>
 
 ---
-
-## 1. 環境変数を読み込む
+## 解説
+### 1. 環境変数を読み込む
 
 `.env`ファイルを用意します。
 
@@ -76,9 +149,7 @@ DB_USER=user
 DB_PASS=password
 ```
 
-`godotenv`をプロジェクトにインストールします。
-
-- [godotenv](https://github.com/joho/godotenv)
+[godotenv](https://github.com/joho/godotenv) をプロジェクトにインストールします。
 
 ```bash
 go get github.com/joho/godotenv
@@ -114,9 +185,9 @@ func main() {
 
 これで、`.env`の値を取得することができるようになりました。
 
-## 2. config パッケージを作成する
+### 2. config パッケージを作成する
 
-### ファイル構成
+#### ファイル構成
 
 ```bash
 <project>
@@ -128,7 +199,7 @@ func main() {
 └── main.go
 ```
 
-### config.go
+#### config.go
 
 `config/config.go`を作成し、構造体`Config`を定義し、初期化のためのメソッド`New()`を定義します。
 
@@ -177,7 +248,7 @@ func (c *Config) New() {
 }
 ```
 
-## 3. go ファイルから config へアクセス
+### 3. go ファイルから config へアクセス
 
 `main.go`からアクセスする例を示します。
 
@@ -200,12 +271,6 @@ func main() {
 ```
 
 ---
-
-## まとめ
-
-今回は、go のプロジェクトにおいて、環境変数を読み取る方法と、任意の go ファイルから config へアクセスする方法を紹介しました。さらに`Config`構造体の形を自由に組み替えることで、より柔軟な config を実現できます。
-
-また、`Config`の値を全て環境変数から読み込んだ値に設定しましたが、それ以外の設定値も`New()`メソッド内で自由に設定できます。
 
 ## 参考
 

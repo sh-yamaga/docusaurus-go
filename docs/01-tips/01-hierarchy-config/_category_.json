@@ -1,0 +1,11 @@
+{
+	"label": "階層config",
+	"className": "red",
+	"link": {
+		"type": "generated-index",
+		"title": "階層config"
+	},
+	"customProps": {
+		"description": "This description can be used in the swizzled DocCard"
+	}
+}
