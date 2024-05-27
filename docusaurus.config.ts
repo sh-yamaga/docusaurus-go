@@ -15,8 +15,8 @@ const config: Config = {
 
 	// GitHub pages deployment config.
 	// If you aren't using GitHub pages, you don't need these.
-	organizationName: "tech-blog", // Usually your GitHub org/user name.
-	projectName: "go.tech", // Usually your repo name.
+	organizationName: "sh-yamaga", // Usually your GitHub org/user name.
+	projectName: "docusaurus-go", // Usually your repo name.
 
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "warn",
@@ -69,13 +69,7 @@ const config: Config = {
 					label: "Effective Go",
 				},
 				{
-					type: "docSidebar",
-					sidebarId: "standardLibrarySidebar",
-					position: "left",
-					label: "標準ライブラリ",
-				},
-				{
-					href: "https://github.com/tech-unit-code/go",
+					href: "https://github.com/sh-yamaga/docusaurus-go",
 					label: "GitHub",
 					position: "right",
 				},
@@ -85,29 +79,11 @@ const config: Config = {
 			style: "dark",
 			links: [
 				{
-					title: "Docs",
-					items: [
-						{
-							label: "Tutorial",
-							to: "/docs/intro",
-						},
-					],
-				},
-				{
 					title: "Community",
 					items: [
 						{
 							label: "Twitter",
 							href: "https://twitter.com/docusaurus",
-						},
-					],
-				},
-				{
-					title: "More",
-					items: [
-						{
-							label: "Blog",
-							to: "/blog",
 						},
 					],
 				},
