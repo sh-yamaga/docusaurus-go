@@ -2,10 +2,10 @@
 title: 実装
 description: このページでは、Go言語で階層化したconfigの実装方法を紹介します。goのプロジェクト内で、環境変数を`.env`から読み取り、任意のgoファイルからアクセスできるようにすることができるようになります。
 image: img/thambnails/go/hierarchy-config.png
-keywords: [Go, 階層, config, godotenv, object]
+keywords: [Go, 階層, config, godotenv, init]
 tags:
   - godotenv
-  - object
+  - init
 ---
 
 import Tabs from '@theme/Tabs';
@@ -132,6 +132,8 @@ func DoSomething() {
     // ...
     fmt.Println(config.Db.User)     // user
     fmt.Println(config.Db.Password) // password
+
+    // do something...
 }
 ```
 
@@ -204,7 +206,8 @@ func main() {
 
 #### config.go
 
-`config/config.go`を作成し、構造体`Config`を定義し、初期化のためのメソッド`New()`を定義します。
+`config/config.go`を作成し、公開する変数を定義し、これらの値を設定する関数`init()`を定義します。  
+なお、`init()`はパッケージがインポートされた時に自動的に実行されます。
 
 ```go title="<project>/config/config.go"
 package config
@@ -257,9 +260,9 @@ func init() {
 
 ### 3. go ファイルから config へアクセス
 
-`package config`をインポートした段階で、`config.init()`が実行され、パッケージ変数が初期化されます。
+`"<project>/config"`をインポートすると、`config.init()`が実行され、パッケージ変数が初期化されます。
 
-```go title="main.go"
+```go title="<project>/main.go"
 package main
 
 import (
@@ -275,6 +278,23 @@ func main() {
 ```
 
 これは、`main.go`に限らず、他のファイルからも同様にアクセス可能です。
+
+```go title="<project>/any/any.go"
+package any
+
+import (
+    "fmt"
+    "<project>/config"
+)
+
+func DoSomething() {
+    fmt.Println(config.App.Url)     // https://example.com
+    fmt.Println(config.Db.User)     // user
+    fmt.Println(config.Db.Password) // password
+
+    // do something...
+}
+```
 
 ---
 
