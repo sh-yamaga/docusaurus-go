@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
 	title: "Go Tips",
 	tagline: "webエンジニア めんだこの技術部屋",
-	favicon: "img/favicon.ico",
+	favicon: "img/mendako.png",
 
 	// Set the production url of your site here
 	url: "https://go.tech.unit-code.com",
