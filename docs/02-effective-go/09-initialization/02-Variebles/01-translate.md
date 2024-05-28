@@ -23,4 +23,4 @@ var (
 
 #### 原文
 
-[Variables](https://golang.org/doc/effective_go#variables)
+[Effective Go#Variables](https://golang.org/doc/effective_go#variables)
