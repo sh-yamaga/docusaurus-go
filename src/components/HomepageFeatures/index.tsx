@@ -10,33 +10,22 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
 	{
-		title: "Easy to Use",
-		Svg: require("@site/static/img/undraw_docusaurus_mountain.svg").default,
-		description: (
-			<>
-				Docusaurus was designed from the ground up to be easily installed and
-				used to get your website up and running quickly.
-			</>
-		),
+		title: "公式ドキュメントベース",
+		Svg: require("@site/static/img/Go-Logo_Aqua.svg").default,
+		description: <>Go の公式ドキュメントを参考にした実装例を紹介しています。</>,
 	},
 	{
-		title: "Focus on What Matters",
+		title: "公式ドキュメントの翻訳",
 		Svg: require("@site/static/img/undraw_docusaurus_tree.svg").default,
 		description: (
-			<>
-				Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-				ahead and move your docs into the <code>docs</code> directory.
-			</>
+			<>Docusaurusにより、より読みやすい形でドキュメントを提供しています。</>
 		),
 	},
 	{
-		title: "Powered by React",
+		title: "公式ドキュメントの補足",
 		Svg: require("@site/static/img/undraw_docusaurus_react.svg").default,
 		description: (
-			<>
-				Extend or customize your website layout by reusing React. Docusaurus can
-				be extended while reusing the same header and footer.
-			</>
+			<>翻訳したドキュメントを読み解くための補足を合わせて提供しています。</>
 		),
 	},
 ];

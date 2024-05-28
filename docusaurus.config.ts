@@ -100,20 +100,37 @@ const config: Config = {
 			style: "dark",
 			links: [
 				{
-					title: "Community",
+					title: "Site",
 					items: [
 						{
-							label: "Twitter",
-							href: "https://twitter.com/docusaurus",
+							label: "unit-code.com",
+							href: "https://unit-code.com",
 						},
 					],
 				},
 				{
-					title: "Other Docs",
+					title: "Community",
 					items: [
 						{
-							label: "tsx.tech.unit-code.com",
-							href: "https://tsx.tech.unit-code.com",
+							label: "X (Twitter)",
+							href: "https://x.com/mendako_web",
+						},
+					],
+				},
+				{
+					title: "Support",
+					items: [
+						{
+							label: "運営者情報",
+							href: "https://unit-code.com/owner/",
+						},
+						{
+							label: "プライバシーポリシー",
+							href: "https://unit-code.com/privacy/",
+						},
+						{
+							label: "お問い合わせ",
+							href: "https://unit-code.com/contact/",
 						},
 					],
 				},
