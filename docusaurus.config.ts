@@ -31,30 +31,41 @@ const config: Config = {
 
 	presets: [
 		[
-			"classic",
+			"@docusaurus/preset-classic",
 			{
+				// Debug defaults to true in dev, false in prod
+				debug: undefined,
+				// Will be passed to @docusaurus/theme-classic.
+				theme: {
+					customCss: ["./src/css/custom.css"],
+				},
+				// Will be passed to @docusaurus/plugin-content-docs (false to disable)
 				docs: {
 					sidebarPath: "./sidebars.ts",
+					showLastUpdateTime: true,
 				},
+				// Will be passed to @docusaurus/plugin-content-blog (false to disable)
 				blog: {
 					showReadingTime: true,
 				},
-				theme: {
-					customCss: "./src/css/custom.css",
+				// Will be passed to @docusaurus/plugin-content-pages (false to disable)
+				pages: {},
+				// Will be passed to @docusaurus/plugin-sitemap (false to disable)
+				sitemap: {},
+				// Will be passed to @docusaurus/plugin-google-gtag (only enabled when explicitly specified)
+				gtag: {
+					trackingID: "G-9487XNRNFL",
+					anonymizeIP: true,
 				},
-			} satisfies Preset.Options,
-		],
-	],
-
-	plugins: [
-		[
-			"@docusaurus/plugin-google-gtag",
-			{
-				trackingID: "G-9487XNRNFL",
-				anonymizeIP: true,
+				// Will be passed to @docusaurus/plugin-google-tag-manager (only enabled when explicitly specified)
+				// googleTagManager: {},
+				// DEPRECATED: Will be passed to @docusaurus/plugin-google-analytics (only enabled when explicitly specified)
+				// googleAnalytics: {},
 			},
 		],
 	],
+
+	// plugins: [[]],
 
 	themeConfig: {
 		// Replace with your project's social card
@@ -97,8 +108,17 @@ const config: Config = {
 						},
 					],
 				},
+				{
+					title: "Other Docs",
+					items: [
+						{
+							label: "tsx.tech.unit-code.com",
+							href: "https://tsx.tech.unit-code.com",
+						},
+					],
+				},
 			],
-			copyright: `Copyright © ${new Date().getFullYear()} unit-code`,
+			copyright: `Copyright © ${new Date().getFullYear()} unit-code.com`,
 		},
 		prism: {
 			theme: prismThemes.github,
