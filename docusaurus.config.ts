@@ -137,6 +137,12 @@ const config: Config = {
 			],
 			copyright: `Copyright © ${new Date().getFullYear()} unit-code.com`,
 		},
+		docs: {
+			sidebar: {
+				hideable: true,
+				autoCollapseCategories: true,
+			},
+		},
 		prism: {
 			theme: prismThemes.github,
 			darkTheme: prismThemes.dracula,
