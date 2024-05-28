@@ -17,8 +17,7 @@ import TabItem from '@theme/TabItem';
 
 ### できるようになること
 
-go のプロジェクト内で、環境変数を`.env`から読み取り、任意の go ファイルからアクセスできるようにすることができるようになります。  
-なお、この解説記事では`main.go`を実行して動く、webサーバーのようなプロジェクトでの使用を想定しています。
+go のプロジェクト内で、環境変数を`.env`から読み取り、任意の go ファイルからアクセスできるようにすることができるようになります。
 
 ### 最終的なファイル構成
 
@@ -33,6 +32,7 @@ go のプロジェクト内で、環境変数を`.env`から読み取り、任�
 ```
 
 <Tabs>
+
 <TabItem value="env" label=".env">
 
 ```
@@ -43,26 +43,7 @@ DB_PASS=password
 ```
 
 </TabItem>
-<TabItem value="any" label="any.go">
 
-```go
-package any
-
-import (
-    "fmt"
-    "<project>/config"
-)
-
-func DoSomething() {
-
-    fmt.Println(cfg.App.Url)     // https://example.com
-    // ...
-    fmt.Println(cfg.Db.User)     // user
-    fmt.Println(cfg.Db.Password) // password
-}
-```
-
-</TabItem>
 <TabItem value="config" label="config.go">
 
 ```go
@@ -75,11 +56,13 @@ import (
     "github.com/joho/godotenv"
 )
 
-type Config struct {
+// Public variables
+// Defined only by the func init
+var (
     App *appConfig
-    Db *dbConfig
+    Db  *dbConfig
     // ...
-}
+)
 
 type appConfig struct {
     Url string
@@ -87,30 +70,33 @@ type appConfig struct {
 }
 
 type dbConfig struct {
-    User string
+    User     string
     Password string
     // ...
 }
 
-func (c *Config) New() {
+// init is called automatically when the package is imported
+func init() {
     err := godotenv.Load()
     if err != nil {
         log.Fatal(".envの読み取りに失敗しました。")
     }
 
-    c.App = &appConfig{
+    App = &appConfig{
         Url: os.Getenv("APP_URL"),
         // ...
     }
-    c.Db = &dbConfig{
+    Db = &dbConfig{
         User:     os.Getenv("DB_USER"),
         Password: os.Getenv("DB_PASS"),
         // ...
     }
 }
+
 ```
 
 </TabItem>
+
 <TabItem value="main" label="main.go">
 
 ```go
@@ -119,21 +105,38 @@ package main
 import (
     "fmt"
     "<project>/config"
-    "<project>/any"
 )
 
 func main() {
-    cfg := config.Config{}
-    cfg.New()
-
-    fmt.Println(cfg.App.Url)     // https://example.com
+    fmt.Println(config.App.Url)     // https://example.com
     // ...
-    fmt.Println(cfg.Db.User)     // user
-    fmt.Println(cfg.Db.Password) // password
+    fmt.Println(config.Db.User)     // user
+    fmt.Println(config.Db.Password) // password
 }
 ```
 
 </TabItem>
+
+<TabItem value="any" label="any.go">
+
+```go
+package any
+
+import (
+    "fmt"
+    "<project>/config"
+)
+
+func DoSomething() {
+    fmt.Println(config.App.Url)     // https://example.com
+    // ...
+    fmt.Println(config.Db.User)     // user
+    fmt.Println(config.Db.Password) // password
+}
+```
+
+</TabItem>
+
 </Tabs>
 
 ---
@@ -213,11 +216,13 @@ import (
     "github.com/joho/godotenv"
 )
 
-type Config struct {
+// Public variables
+// Defined only by the func init
+var (
     App *appConfig
-    Db *dbConfig
+    Db  *dbConfig
     // ...
-}
+)
 
 type appConfig struct {
     Url string
@@ -225,32 +230,34 @@ type appConfig struct {
 }
 
 type dbConfig struct {
-    User string
+    User     string
     Password string
     // ...
 }
 
-func (c *Config) New() {
+// init is called automatically when the package is imported
+func init() {
     err := godotenv.Load()
     if err != nil {
         log.Fatal(".envの読み取りに失敗しました。")
     }
 
-    c.App = &appConfig{
+    App = &appConfig{
         Url: os.Getenv("APP_URL"),
         // ...
     }
-    c.Db = &dbConfig{
+    Db = &dbConfig{
         User:     os.Getenv("DB_USER"),
         Password: os.Getenv("DB_PASS"),
         // ...
     }
 }
+
 ```
 
 ### 3. go ファイルから config へアクセス
 
-`main.go`からアクセスする例を示します。
+`package config`をインポートした段階で、`config.init()`が実行され、パッケージ変数が初期化されます。
 
 ```go title="main.go"
 package main
@@ -261,14 +268,13 @@ import (
 )
 
 func main() {
-    cfg := config.Config{}
-    cfg.New()
-
-    fmt.Println(cfg.App.Url)     // https://example.com
-    fmt.Println(cfg.Db.User)     // user
-    fmt.Println(cfg.Db.Password) // password
+    fmt.Println(config.App.Url)     // https://example.com
+    fmt.Println(config.Db.User)     // user
+    fmt.Println(config.Db.Password) // password
 }
 ```
+
+これは、`main.go`に限らず、他のファイルからも同様にアクセス可能です。
 
 ---
 
