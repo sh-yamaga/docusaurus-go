@@ -90,6 +90,12 @@ const config: Config = {
 					label: "Effective Go",
 				},
 				{
+					type: "docSidebar",
+					sidebarId: "theGoBlogSidebar",
+					position: "left",
+					label: "The Go Blog",
+				},
+				{
 					href: "https://github.com/sh-yamaga/docusaurus-go",
 					label: "GitHub",
 					position: "right",

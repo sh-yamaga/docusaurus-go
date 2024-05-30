@@ -1,0 +1,8 @@
+{
+	"label": "The Go Blog",
+	"className": "red",
+	"link": {
+		"type": "generated-index",
+		"title": "The Go Blog"
+	}
+}
